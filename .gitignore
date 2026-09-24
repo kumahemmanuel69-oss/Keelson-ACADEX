@@ -1,0 +1,4 @@
+# generated proof renders / scratch
+build/
+assets/opt/
+__pycache__/
