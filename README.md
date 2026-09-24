@@ -15,10 +15,22 @@ Ghanaian classroom picture.
 
 | File | What it is |
 |---|---|
-| `Effective-Assessment-Practices-KATON-2026.pptx` | 36-slide editable deck, 16:9, with full speaker notes on every slide |
-| `Assessment-Handout-KATON-2026.pdf` | 21-page A4 companion handbook for colleagues |
-| `Presenters-Run-Sheet.md` | Timings, core-slide markers and facilitation cues |
-| `Assessment-Jargon-Buster.md` | The jargon-buster section as plain markdown |
+| `Effective-Assessment-Practices-KATON-2026.pptx` | 40-slide editable deck, 16:9, speaker notes on every slide |
+| `Assessment-Handout-KATON-2026.pdf` | 22-page A4 companion handbook for colleagues |
+| `Presenters-Run-Sheet.md` | Timings, core-slide markers, facilitation cues |
+| `Assessment-Jargon-Buster.md` | The glossary as plain markdown |
+
+### Deck contents
+
+1. **What assessment really means** — the definition, and AfL / AaL / AoL untangled
+2. **The Soup and the Meal** — formative vs summative, via the soup-tasting metaphor
+3. **Before you teach** — diagnostic assessment, differentiated assessment
+4. **The Seven Pillars** — validity, reliability, fairness, transparency, inclusivity, practicability, utility
+5. **The Jargon Buster** — rubrics, Depth of Knowledge, everyday terms
+6. **Strategies that work** — portfolio, debate, practical/authentic assessment
+7. **Feedback** — the good mechanic, and three-minute tools for Monday
+8. **Planning** — the six-phase assessment plan, and the 70/30 split
+9. **Technology** — e-assessment without a computer lab
 
 ### Source builders
 
@@ -26,7 +38,7 @@ Ghanaian classroom picture.
 |---|---|
 | `build_deck.py` | Generates the PowerPoint from `assets/opt/` |
 | `build_handout.py` | Generates the PDF handbook (ReportLab) |
-| `tools/pptx_render.py` | Minimal PPTX→PNG proofing renderer + text-overflow QA |
+| `tools/pptx_render.py` | Minimal PPTX→PNG proofing renderer with text-overflow QA |
 
 ### Rebuilding
 
@@ -35,9 +47,12 @@ pip install python-pptx pillow reportlab pymupdf lxml
 python3 build_deck.py
 python3 build_handout.py
 
-# proof the deck (optional): renders PNGs and reports text overflow
+# proof the deck: renders PNGs and reports any text overflow
 PPTX_QA=1 python3 tools/pptx_render.py deliverables/Effective-Assessment-Practices-KATON-2026.pptx build/proof
 ```
+
+Note: `assets/opt/` holds width-optimised JPEGs derived from the full-size PNGs in
+`assets/`. Regenerate with the snippet in `build_deck.py`'s header if it is missing.
 
 ### Content sources
 

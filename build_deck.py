@@ -1125,101 +1125,172 @@ slide_table(
     "columns — a plain meaning and a classroom picture. Take it with you.'")
 
 # ---------------------------------------------------------------- 7. FEEDBACK AND TOOLS
-slide_section(6, "Feedback —\nWhere Learning Happens",
+slide_section(7, "Feedback —\nWhere Learning Happens",
               "The most powerful assessment tool you already own.",
               img="07_feedback_loop.jpg",
-              notes_text="PART 6 (6 min)\n\n"
+              notes_text="PART 7 (6 min)\n\n"
               "Every assessment in this workshop exists to produce one thing: feedback that "
               "changes what the learner does next. This is the payoff section.\n\n"
               "It is also the section where teachers realise they are doing more work than they "
               "need to, for less effect than they want.")
 
-slide_diagram_text(
+slide_image_text(
     "Feedback — The Good Mechanic",
     "Why \u201cgood work, 7/10\u201d is not feedback",
-    [("Assessment happens", "You gather evidence — a test, an exercise, a question in class."),
-     ("You give SPECIFIC feedback", "Not \u201cgood work\u201d. Point at the exact part: \u201cthis step is wrong, because\u2026\u201d"),
-     ("The learner acts on it", "This needs TIME in the next lesson. No time, no feedback."),
-     ("Learning improves", "The gap closes — and you can see that it closed.")],
+    "12_feedback_mechanic.jpg",
     [("The useless mechanic",
-      "Says \u201cthe car is bad\u201d and takes your money. You leave knowing nothing, and the "
-      "car is no better."),
+      "Says \u201cthe car is bad\u201d and takes your money. You leave knowing nothing, and the car is no better."),
      ("The good mechanic",
-      "Opens the bonnet, points at ONE exact part and says: \u201cThis hose is cracked. Replace it "
-      "and the overheating stops.\u201d You now know what to do next."),
+      "Opens the bonnet, points at ONE exact part and says: \u201cThis hose is cracked. Replace it and the overheating stops.\u201d You now know what to do next."),
      ("Plain English",
-      "Feedback is information that helps a learner close the gap between where they are and "
-      "where they need to be."),
+      "Feedback is information that helps a learner close the gap between where they are and where they need to be."),
      ("What it is NOT",
-      "It is not a score. It is not praise. \u201cGood work, 7/10\u201d tells a learner nothing "
-      "about what to do differently. A mark is a verdict; feedback is a map."),
+      "It is not a score. It is not praise. \u201cGood work, 7/10\u201d tells a learner nothing about what to do differently. A mark is a verdict; feedback is a map."),
      ("The rule teachers break",
-      "Feedback without TIME TO ACT ON IT is decoration. If you hand back corrections and "
-      "immediately move to the next topic, the feedback dies in the exercise book.")],
-    diagram_side="right",
+      "Feedback without TIME TO ACT ON IT is decoration. If you hand back corrections and immediately move to the next topic, the feedback dies in the exercise book.")],
+    img_side="right",
     accent=TERRA,
-    caption="Feedback only works if the learner has time to act on it.",
+    img_caption="Point at the exact part, and say what to do next.",
     note_text="FEEDBACK (4 min)\n\n"
-    "THE MECHANIC ANALOGY is the heart of this slide. Everyone has met both mechanics. Ask the "
-    "room which one they would return to, and why. Then make the turn: 'Which mechanic are we to "
-    "our learners?'\n\n"
-    "THE HARD TRUTH: most of what we call feedback is a number plus a word. 'Good work, 7/10' "
-    "gives the learner a verdict, not a next step. The learner knows they got 7. They do not know "
-    "what to do to get 9.\n\n"
-    "THE MOST ACTIONABLE RULE — and the one teachers find genuinely relieving: feedback needs "
-    "TIME. Ten minutes at the start of the next lesson for learners to read and act on your "
-    "corrections is worth more than two hours of extra marking. Without that time, all your "
-    "careful marking is decoration.\n\n"
-    "THE MANUAL'S TERMS to use: 'constructive feedback' — it points to the next step, not just "
-    "the fault. And note the manual's instruction that learners must be 'guided to develop how "
-    "to use or respond to feedback to improve learning'. Using feedback is itself a skill we have "
-    "to teach.\n\n"
-    "SELF-CHECK TO OFFER: 'When you hand back a marked script, does the learner do anything with "
-    "it other than look at the score?'")
+             "THE MECHANIC ANALOGY is the heart of this slide. Ask the room which mechanic they would "
+             "return to, then make the turn: 'Which mechanic are we to our learners?'\n\n"
+             "THE HARD TRUTH: most of what we call feedback is a number plus a word. 'Good work, 7/10' "
+             "gives the learner a verdict, not a next step.\n\n"
+             "THE MOST ACTIONABLE RULE: feedback needs TIME. Ten minutes at the start of the next lesson "
+             "for learners to act on your corrections is worth more than two hours of extra marking.")
 
-slide_diagram_text(
+slide_image_text(
     "Three-Minute Tools You Can Use on Monday",
     "No budget. No printing. No extra marking load.",
-    [("Pick ONE tool", "Just one. Not all five. Choose the one that suits your subject."),
-     ("Give it 3 minutes", "Exit card at the door, entry ticket at the start, or a quick Think-Pair-Share."),
-     ("Read what you collect", "Ten slips tell you where the whole class is stuck."),
-     ("Start tomorrow from there", "That is the whole loop — assessment feeding teaching.")],
+    "14_peer_assessment.jpg",
     [("Exit card",
-      "Last three minutes of the lesson: on a slip, \u201cwrite one thing you learned today and "
-      "one thing you are still confused about.\u201d Collect at the door. You now know exactly "
-      "where to start next lesson."),
+      "Last three minutes of the lesson: on a slip, \u201cwrite one thing you learned today and one thing you are still confused about.\u201d Collect at the door. You now know exactly where to start next lesson."),
      ("Entry ticket",
-      "First three minutes: one question that shows what they already bring. Free diagnostic "
-      "assessment, every single day."),
+      "First three minutes: one question that shows what they already bring. Free diagnostic assessment, every single day."),
      ("Think-Pair-Share",
-      "Think alone, then discuss with a partner, then share with the class. Three minutes of real "
-      "thinking time means the quiet learners in the back have something to say when you ask."),
+      "Think alone, then discuss with a partner, then share with the class. Three minutes of real thinking time means the quiet learners in the back have something to say when you ask."),
      ("K-W-L chart",
-      "Three columns: what I Know, what I Want to know, what I Learned. Makes thinking visible "
-      "and makes the learner reflective."),
+      "Three columns: what I Know, what I Want to know, what I Learned. Makes thinking visible and makes the learner reflective."),
      ("Self- and peer-assessment",
-      "Learners check their own or each other's work AGAINST THE RUBRIC. Only works if they have "
-      "the criteria in hand — otherwise it becomes a popularity contest.")],
-    diagram_side="left",
+      "Learners check their own or each other's work AGAINST THE RUBRIC. Only works if they have the criteria in hand \u2014 otherwise it becomes a popularity contest.")],
+    img_side="left",
     accent=GOLD,
-    caption="Three minutes. No budget. No extra marking load.",
+    img_caption="Learners assessing each other \u2014 with the rubric in hand.",
     note_text="THREE-MINUTE TOOLS (4 min)\n\n"
-    "THIS IS THE 'TAKE IT HOME' SLIDE. Its job is to prove that formative assessment is not extra "
-    "work. Every tool here costs three minutes and no money.\n\n"
-    "PICK ONE AND COMMIT THE ROOM. Do not ask them to adopt all five. Ask each teacher to choose "
-    "ONE tool to try in their very next lesson and, if possible, tell the person next to them "
-    "which one they chose. Public commitment increases follow-through dramatically.\n\n"
-    "WHY EXIT CARDS ARE THE BEST STARTING POINT: they take three minutes, they need only scrap "
-    "paper, they work with 60 learners, and they tell you precisely where to begin tomorrow. If "
-    "you only ever adopt one thing from today, adopt the exit card.\n\n"
-    "THE PEER-ASSESSMENT WARNING is worth saying: peer assessment fails when learners do not have "
-    "the rubric. The manual is clear that learners should assess 'against specified criteria'. "
-    "Give them the criteria, and train them to be specific and kind.\n\n"
-    "NOTE ON THE MANUAL: it lists Think-Pair-Share, exit cards, K-W-L and peer assessment among "
-    "the curriculum's formative strategies — these are not extra inventions.")
+             "THIS IS THE 'TAKE IT HOME' SLIDE. Its job is to prove that formative assessment is not extra "
+             "work. Every tool here costs three minutes and no money.\n\n"
+             "PICK ONE AND COMMIT THE ROOM. Do not ask them to adopt all five. Ask each teacher to choose "
+             "ONE tool to try in their very next lesson.\n\n"
+             "WHY EXIT CARDS ARE THE BEST STARTING POINT: three minutes, scrap paper, works with 60 "
+             "learners, and tells you precisely where to begin tomorrow.")
+
+# ---------------------------------------------------------------- 7b. STRATEGIES
+slide_section(6, "Strategies\nThat Work",
+              "Three of the manual's strategies, brought down to earth.",
+              img="15_portfolio.jpg",
+              notes_text="PART 6 (6 min)\n\n"
+              "The manual lists around thirty assessment strategies in Section 7. We are going to look "
+              "closely at three that teachers most often get wrong, or avoid because they seem like "
+              "too much work: portfolio, debate and practical assessment.\n\n"
+              "For each one, notice the same pattern: the strategy is not the hard part. Deciding the "
+              "criteria BEFORE you start is the hard part. Get that right and all three become easy.")
+
+slide_concept(
+    "Portfolio \u2014 The Learner's Own Story",
+    "Not a folder of everything. A chosen collection, with reflection.",
+    "A carefully chosen collection of a learner's work across time, showing progress towards the "
+    "learning outcomes. It can be used formatively \u2014 to see growth and give feedback \u2014 and "
+    "summatively, where a clear rubric is applied.",
+    "Two things separate a real portfolio from a pile of papers. First, it is CURATED \u2014 the "
+    "learner chooses what goes in, and learns by choosing. Second, it carries REFLECTION \u2014 beside "
+    "each piece, the learner writes a short note: \u201cI chose this because\u2026\u201d and \u201cnext "
+    "time I would\u2026\u201d. That reflection is where the learning happens. Without it, you have a "
+    "folder. With it, you have assessment as learning \u2014 the learner judging their own growth.",
+    extra=[("Where the manual helps:  ", GREEN, True, False),
+           ("Appendix C.1 gives worked portfolio exemplars for Science and Mathematics, including the "
+            "rubric. You do not have to invent this from scratch.", GREY, False, False)],
+    accent=GREEN,
+    notes_text="PORTFOLIO (2 min)\n\n"
+    "THE MISCONCEPTION: most teachers think a portfolio is a folder of every exercise the learner has "
+    "ever done. That is not a portfolio; it is a filing cabinet.\n\n"
+    "THE TWO WORDS THAT MATTER: CURATED and REFLECTION.\n"
+    "  \u00b7 Curated \u2014 the learner chooses. Choosing is itself an act of assessment: they must "
+    "judge which work best shows their learning.\n"
+    "  \u00b7 Reflection \u2014 a short written note beside each piece. 'I chose this because\u2026' "
+    "and 'next time I would\u2026'.\n\n"
+    "THIS IS ASSESSMENT AS LEARNING IN ITS PUREST FORM. The learner is not waiting for you to judge "
+    "them; they are judging themselves, with evidence.\n\n"
+    "PRACTICAL NOTE: portfolios take a term or a year to build. Start small \u2014 one subject, one "
+    "class, three pieces across one term. The manual's Appendix C.1 has Science and Mathematics "
+    "exemplars with rubrics already written.\n\n"
+    "TIME-SAVING TIP TO OFFER: you do not mark every piece in the portfolio. You mark the REFLECTIONS "
+    "and the final selection. That is where the thinking is visible.")
+
+slide_image_text(
+    "Debate \u2014 Thinking Out Loud",
+    "A strategy that assesses reasoning, not just recall",
+    "16_debate.jpg",
+    [("Plain English",
+      "Learners take a position on an issue, argue it with evidence, and respond to the opposing case. You assess the quality of the thinking, not just the conclusion."),
+     ("The classroom picture",
+      "A Government class debates: \u201cShould Ghana raise the minimum wage?\u201d Half the room argues for it, half against. The Economics or English teacher uses the same format for their own content."),
+     ("What you are actually assessing",
+      "Clarity of the argument  \u00b7  use of evidence, not just opinion  \u00b7  quality of rebuttal \u2014 do they answer the other side?  \u00b7  listening  \u00b7  respectful disagreement."),
+     ("The rule that makes it work",
+      "Give the rubric BEFORE the debate, and give learners time to research. A debate sprung on them with no preparation assesses confidence, not competence \u2014 and it rewards the loudest voices.")],
+    img_side="right",
+    accent=TERRA,
+    img_caption="Assessing the reasoning, not the volume.",
+    note_text="DEBATE (2 min)\n\n"
+    "WHY DEBATE IS UNDERRATED: it is one of the few strategies that assesses THINKING IN PUBLIC. A "
+    "written answer hides the reasoning; a debate exposes it. You hear whether the learner actually "
+    "understands, or has merely memorised.\n\n"
+    "THE FAIRNESS WARNING \u2014 and this is the important bit: a debate sprung on learners with no "
+    "preparation does not assess competence. It assesses confidence. It rewards the loudest voices and "
+    "punishes the shy but thoughtful learner. Give the motion and research time in advance, then the "
+    "debate measures what you actually want to measure.\n\n"
+    "WHAT TO PUT IN THE RUBRIC: clarity of argument \u00b7 use of evidence \u00b7 quality of rebuttal "
+    "\u00b7 listening and response \u00b7 respectful disagreement. Notice that 'volume' and "
+    "'confidence' do not appear.\n\n"
+    "SEN AND INCLUSIVITY NOTE: offer a written or small-group alternative for learners who genuinely "
+    "cannot perform in front of a large audience. The learning outcome is the reasoning, not the "
+    "performance.")
+
+slide_image_text(
+    "Practical and Performance \u2014 Doing It For Real",
+    "The manual calls it authentic assessment: it looks like real life",
+    "17_practical_lab.jpg",
+    [("Plain English",
+      "Learners demonstrate a skill in a real or simulated setting, and you judge the DOING \u2014 not just the writing about it."),
+     ("The classroom picture",
+      "The Chemistry learner stands at the bench and titrates. The Technical Skills learner dismantles and reassembles an engine. The Visual Arts learner throws a pot. The Music learner performs. You are watching the skill, not reading about it."),
+     ("What the teacher must do first",
+      "Design a task requiring real application  \u00b7  provide resources, guidance and support  \u00b7  evaluate against PREDETERMINED criteria  \u00b7  model the skill  \u00b7  act as coach, not just examiner."),
+     ("Why the rubric matters most here",
+      "In a practical, judgement happens live with no chance to re-read. Without a rubric written in advance you will mark the confident performer higher than the careful one.")],
+    img_side="left",
+    accent=GREEN,
+    img_caption="You are judging the doing, not the writing about it.",
+    note_text="PRACTICAL AND PERFORMANCE (2 min)\n\n"
+    "THIS IS WHAT THE MANUAL CALLS 'performance-based / practical / authentic' assessment. "
+    "'Authentic' simply means: it looks like real life.\n\n"
+    "THE KEY DIFFERENCE: you do not ask them to describe a titration on paper. They stand at the bench "
+    "and titrate. You judge what they DO.\n\n"
+    "THE TEACHER'S FIVE JOBS, straight from the manual: design a task requiring real-life application "
+    "\u00b7 provide resources, guidance and support \u00b7 evaluate against predetermined criteria "
+    "\u00b7 model the skill \u00b7 serve as coach or mentor throughout.\n\n"
+    "WHY THE RUBRIC IS NON-NEGOTIABLE HERE: in a written test you can re-read a script. In a practical, "
+    "the judgement happens live and once. Without criteria fixed in advance, you will unconsciously "
+    "mark the confident performer higher than the careful one \u2014 and that is a reliability failure, "
+    "not an opinion.\n\n"
+    "TIMING NOTE: practicals are time-hungry. The manual's practicability principle applies \u2014 "
+    "rotate groups, use checklists for observation, and train learners to record their own results "
+    "while you observe technique.\n\n"
+    "SMALL-SCHOOL REALITY: if you have no laboratory, a simulated or improvised setting still counts. "
+    "The manual explicitly allows 'real or simulated' contexts.")
 
 # ---------------------------------------------------------------- 8. PLANNING
-slide_section(7, "Planning It\nProperly",
+slide_section(8, "Planning It\nProperly",
               "Turning all of this into a plan you can actually follow.",
               img="09_plan_journey.jpg",
               notes_text="PART 7 (5 min)\n\n"
@@ -1305,7 +1376,7 @@ slide_concept(
     "raise consistency as a departmental issue, not just an individual one.")
 
 # ---------------------------------------------------------------- 9. E-ASSESSMENT
-slide_section(8, "Assessment and\nTechnology",
+slide_section(9, "Assessment and\nTechnology",
               "e-Assessment — including the versions that work without a computer lab.",
               img="01_hero_classroom.jpg",
               notes_text="PART 8 (3 min)\n\n"
@@ -1314,52 +1385,31 @@ slide_section(8, "Assessment and\nTechnology",
               "If your school has those things, wonderful. If it does not, you can still do "
               "e-assessment tomorrow.")
 
-slide_diagram_text(
+slide_image_text(
     "e-Assessment — You Probably Already Do It",
     "Technology for assessing, not just teaching",
-    [("Learner submits", "A 60-second WhatsApp voice note, a photo of their practical work, or an online quiz."),
-     ("The tool marks \u2014 or you listen", "A Google Form marks itself; you listen to voice notes on your way home."),
-     ("Feedback goes back fast", "The learner sees their score or hears your comment in minutes, not weeks."),
-     ("You see the pattern", "Everyone failed the same question \u2014 a whole-class gap you can now fix.")],
+    "11_tech_classroom.jpg",
     [("Plain English",
-      "Using information technology and digital tools to assess learners — to design, deliver, "
-      "score, analyse, report and manage assessment."),
+      "Using information technology and digital tools to assess learners \u2014 to design, deliver, score, analyse, report and manage assessment."),
      ("The myth to kill",
-      "e-Assessment does NOT require a computer lab. If your school has one phone per group and "
-      "a WhatsApp class group, you can do e-assessment this week."),
+      "e-Assessment does NOT require a computer lab. If your school has one phone per group and a WhatsApp class group, you can do e-assessment this week."),
      ("Low-tech, high-value examples",
-      "A class WhatsApp group where learners submit a 60-second voice note explaining a concept  "
-      "\u00b7  a Google Form quiz marked automatically  \u00b7  a Kahoot round at the end of a "
-      "lesson  \u00b7  photographs of practical work submitted for feedback."),
+      "A class WhatsApp group where learners submit a 60-second voice note explaining a concept  \u00b7  a Google Form quiz marked automatically  \u00b7  a Kahoot round at the end of a lesson  \u00b7  photographs of practical work submitted for feedback."),
      ("Where it genuinely excels",
-      "Immediate feedback to learners  \u00b7  automatic marking that saves your evenings  \u00b7  "
-      "digital portfolios that show progress over a whole programme  \u00b7  analytics that reveal "
-      "whole-class gaps."),
+      "Immediate feedback to learners  \u00b7  automatic marking that saves your evenings  \u00b7  digital portfolios showing progress over a whole programme  \u00b7  analytics that reveal whole-class gaps."),
      ("Two cautions from the manual",
-      "Make provision for learners with SEN who need extra support with the platform, and ensure "
-      "the integrity and security of the platform to prevent cheating and cyberbullying.")],
-    diagram_side="right",
+      "Make provision for learners with SEN who need extra support with the platform, and ensure the integrity and security of the platform to prevent cheating and cyberbullying.")],
+    img_side="right",
     accent=GREEN,
-    caption="One phone per group is enough to start.",
+    img_caption="Three learners, one phone, and a quiz that marks itself.",
     note_text="e-ASSESSMENT (3 min)\n\n"
-    "LEAD WITH THE MYTH-BUSTER: most teachers hear 'e-assessment' and switch off, thinking of "
-    "computer labs and unreliable internet. The manual's definition is simply 'the use of "
-    "information technology and digital tools to assess learners' achievement'. A phone is "
-    "technology.\n\n"
-    "THE MOST PRACTICAL IDEA ON THIS SLIDE is the WhatsApp voice note. A learner records sixty "
-    "seconds explaining a concept. You listen while walking home. You hear their actual reasoning "
-    "— which a written answer often hides — and you can respond with a voice note in thirty "
-    "seconds. That is genuinely powerful formative assessment with tools every learner already "
-    "has.\n\n"
-    "THE QUALITY-OF-LIFE POINT: automatic marking. A Google Form quiz marks itself and can email "
-    "the learner their score instantly. For large classes, this returns hours of your week.\n\n"
-    "THE MANUAL'S EXAMPLES to name if asked: online quizzes and tests, digital portfolios, "
-    "simulations and virtual labs, discussion boards and blogs, e-open-book assessments, "
-    "multimedia projects, learning analytics, digital rubrics.\n\n"
-    "DO NOT SKIP THE CAUTIONS. The manual is explicit that teachers must make provision for "
-    "learners with SEN who may need extra support with the platform, and must ensure integrity, "
-    "security and ethical use — to prevent cheating and cyberbullying. Say both out loud; they "
-    "are the questions a thoughtful staff will ask.")
+             "LEAD WITH THE MYTH-BUSTER: most teachers hear 'e-assessment' and switch off, thinking of "
+             "computer labs and unreliable internet. The manual defines it simply as the use of "
+             "information technology and digital tools to assess learners' achievement. A phone is "
+             "technology.\n\n"
+             "THE MOST PRACTICAL IDEA: the WhatsApp voice note. A learner records sixty seconds "
+             "explaining a concept. You listen while walking home and reply in thirty seconds.\n\n"
+             "DO NOT SKIP THE CAUTIONS on SEN provision and platform integrity.")
 
 # ---------------------------------------------------------------- 10. CLOSE
 slide_concept(

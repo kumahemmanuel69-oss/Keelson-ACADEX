@@ -278,8 +278,9 @@ toc = [
     ("4", "The Seven Pillars", "What holds a good assessment up"),
     ("5", "Depth of Knowledge", "The staircase of thinking"),
     ("6", "The Jargon Buster", "Every technical term, in plain words"),
-    ("7", "Phrases We Get Wrong", "Common misreadings, corrected"),
-    ("8", "The One-Page Summary", "Pin this above your desk"),
+    ("7", "Strategies in Action", "Portfolio, debate and practical assessment, brought to earth"),
+    ("8", "Phrases We Get Wrong", "Common misreadings, corrected"),
+    ("9", "The One-Page Summary", "Pin this above your desk"),
 ]
 rows = [[Paragraph(f"<b>{n}</b>", S['toc']),
          Paragraph(f"<b>{t}</b>", S['toc']),
@@ -871,8 +872,62 @@ story.append(Paragraph(
 
 story.append(PageBreak())
 
+# ================================================================ 7. STRATEGIES
+story += band("7 \u00b7 Strategies in Action",
+              "Three of the manual's strategies, brought down to earth")
+story.append(Paragraph(
+    "The manual lists around thirty assessment strategies in Section 7. Here are three that teachers "
+    "most often get wrong, or avoid because they look like too much work. Notice the same pattern in "
+    "all three: <b>the strategy is not the hard part. Deciding the criteria before you start is.</b>",
+    S['body']))
+story.append(Spacer(1, 4))
+
+story.append(concept(
+    "Portfolio \u2014 the learner's own story",
+    "A carefully chosen collection of a learner's work across time, showing progress towards the "
+    "learning outcomes. Usable formatively and, with a clear rubric, summatively.",
+    "Two things separate a real portfolio from a pile of papers. First it is <b>curated</b> \u2014 the "
+    "learner chooses what goes in, and learns by choosing. Second it carries <b>reflection</b> \u2014 "
+    "beside each piece, a short note: \u201cI chose this because\u2026\u201d and \u201cnext time I "
+    "would\u2026\u201d. Without reflection you have a folder. With it, you have assessment as learning.",
+    "<b>Where the manual helps:</b> Appendix C.1 gives worked portfolio exemplars for Science and "
+    "Mathematics, including the rubric. <b>Time-saver:</b> you do not mark every piece \u2014 you mark "
+    "the reflections and the final selection, which is where the thinking is visible."))
+
+story.append(concept(
+    "Debate \u2014 thinking out loud",
+    "Learners take a position on an issue, argue it with evidence, and respond to the opposing case. "
+    "You assess the quality of the thinking, not the conclusion.",
+    "A Government class debates: \u201cShould Ghana raise the minimum wage?\u201d Half the room argues "
+    "for it, half against. What you are assessing: clarity of the argument \u00b7 use of evidence, not "
+    "just opinion \u00b7 quality of rebuttal \u2014 do they actually answer the other side? \u00b7 "
+    "listening \u00b7 respectful disagreement.",
+    "<b>The rule that makes it work:</b> give the rubric <i>before</i> the debate and give learners "
+    "research time. A debate sprung on learners with no preparation assesses <b>confidence, not "
+    "competence</b> \u2014 and it rewards the loudest voices. Offer a written or small-group "
+    "alternative for learners who cannot perform before a large audience."))
+
+story.append(concept(
+    "Practical and performance \u2014 doing it for real",
+    "Learners demonstrate a skill in a real or simulated setting, and you judge the <b>doing</b> "
+    "\u2014 not just the writing about it. The manual calls this performance-based, practical or "
+    "authentic assessment.",
+    "The Chemistry learner stands at the bench and titrates. The Technical Skills learner dismantles "
+    "and reassembles an engine. The Visual Arts learner throws a pot. The Music learner performs. You "
+    "are watching the skill, not reading about it. And if you have no laboratory, a simulated or "
+    "improvised setting still counts \u2014 the manual explicitly allows \u201creal or simulated\u201d "
+    "contexts.",
+    "<b>The teacher's five jobs, from the manual:</b> design a task requiring real-life application "
+    "\u00b7 provide resources, guidance and support \u00b7 evaluate against <i>predetermined</i> "
+    "criteria \u00b7 model the skill \u00b7 serve as coach or mentor throughout. <b>Why the rubric "
+    "matters most here:</b> a written script can be re-read; a practical is judged live, once. Without "
+    "criteria fixed in advance you will mark the confident performer higher than the careful one "
+    "\u2014 and that is a reliability failure, not an opinion."))
+
+story.append(PageBreak())
+
 # ================================================================ 8. MISREADINGS
-story += band("7 \u00b7 Phrases We Get Wrong",
+story += band("8 \u00b7 Phrases We Get Wrong",
               "Common misreadings, corrected")
 story.append(datatable(
     ["People say\u2026", "But the manual means\u2026"],
@@ -921,7 +976,7 @@ story.append(Paragraph(
 story.append(PageBreak())
 
 # ================================================================ 9. SUMMARY
-story += band("8 \u00b7 The One-Page Summary", "Pin this above your desk")
+story += band("9 \u00b7 The One-Page Summary", "Pin this above your desk")
 story.append(Spacer(1, 6))
 CEN = ParagraphStyle('cen', fontName="Body", fontSize=11.5, leading=18,
                       textColor=INK, alignment=TA_CENTER, spaceAfter=9)
