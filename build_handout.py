@@ -272,15 +272,19 @@ story.append(Paragraph(
 story.append(Spacer(1, 4))
 
 toc = [
+    ("\u2013", "Workshop Objectives", "What you should be able to do by the end"),
     ("1", "The Soup and the Meal", "The one picture that explains formative and summative assessment"),
     ("2", "AfL, AaL and AoL", "The three acronyms, untangled"),
     ("3", "The Three Main Purposes", "Before, during and after teaching"),
-    ("4", "The Seven Pillars", "What holds a good assessment up"),
-    ("5", "Depth of Knowledge", "The staircase of thinking"),
-    ("6", "The Jargon Buster", "Every technical term, in plain words"),
-    ("7", "Strategies in Action", "Portfolio, debate and practical assessment, brought to earth"),
-    ("8", "Phrases We Get Wrong", "Common misreadings, corrected"),
-    ("9", "The One-Page Summary", "Pin this above your desk"),
+    ("4", "Ghana's Policy Landscape", "The actors, the frameworks, and the 70/30 split"),
+    ("5", "The Seven Pillars", "What holds a good assessment up"),
+    ("6", "Depth of Knowledge", "The staircase of thinking"),
+    ("7", "Strategies in Action", "How to choose one, and four that work"),
+    ("8", "Designing a Task & Rubric", "Your workshop guide \u2014 the six steps"),
+    ("9", "Common Challenges", "The real constraints, and practical answers"),
+    ("10", "The Jargon Buster", "Every technical term, in plain words"),
+    ("11", "Phrases We Get Wrong", "Common misreadings, corrected"),
+    ("12", "The One-Page Summary", "Pin this above your desk"),
 ]
 rows = [[Paragraph(f"<b>{n}</b>", S['toc']),
          Paragraph(f"<b>{t}</b>", S['toc']),
@@ -473,7 +477,102 @@ story.append(concept(
 story.append(PageBreak())
 
 # ================================================================ 4. SEVEN PILLARS
-story += band("4 \u00b7 The Seven Pillars of Effective Assessment",
+story += band("4 \u00b7 Ghana's Assessment Policy Landscape",
+              "What you are required to do \u2014 and who requires it")
+story.append(Paragraph(
+    "Teachers often carry out assessment requirements without knowing where they come from or what "
+    "they are for. This section connects the dots.", S['body']))
+story.append(Spacer(1, 4))
+
+story.append(Paragraph("Who does what", S['h2']))
+story.append(datatable(
+    ["Body", "Full name", "What they do", "Why you should care"],
+    [["<b>NaCCA</b>", "National Council for Curriculum and Assessment",
+      "Sets the curriculum and the assessment guidance",
+      "This handbook's source manual is theirs"],
+     ["<b>MoE</b>", "Ministry of Education", "Sets national policy, funds the system",
+      "Owns the reform behind the current curriculum"],
+     ["<b>GES</b>", "Ghana Education Service", "Runs public pre-tertiary schools",
+      "Your employer; issues day-to-day directives"],
+     ["<b>WAEC</b>", "West African Examinations Council",
+      "Runs WASSCE \u2014 the external 70%", "Their verdict sits on top of your 30%"],
+     ["<b>NaSIA</b>", "National School Inspectorate Authority", "Inspects schools",
+      "Inspectors will ask to see your assessment records"],
+     ["<b>NTC</b>", "National Teaching Council",
+      "Regulates the profession: licensure and CPD",
+      "Your licence renewal depends on professional development"]],
+    widths=[20 * mm, 44 * mm, 52 * mm, CW - 116 * mm]))
+
+story.append(Spacer(1, 6))
+story.append(Paragraph("The frameworks \u2014 where the rules come from", S['h2']))
+story.append(datatable(
+    ["Framework", "Full name", "What it covers"],
+    [["<b>NPLAF</b>", "National Pre-tertiary Learning and Assessment Framework",
+      "The national master document. Defines the principles and forms of assessment for ALL "
+      "pre-tertiary levels. Every principle in Section 5 traces back here. Read its inclusivity "
+      "section (page 32)."],
+     ["<b>SEAF</b>", "Secondary Education Assessment Framework",
+      "How SHS, SHTS and STEM learners are assessed within and across grade levels. The direct "
+      "rulebook for your classroom. It proposes the two forms: formative and summative."],
+     ["<b>SBC</b>", "Standards-Based Curriculum",
+      "The current SHS curriculum, organised by strands and sub-strands, with learning outcomes "
+      "expressed as standards. Your assessment must align to these \u2014 that is where validity "
+      "comes from in practice."]],
+    widths=[24 * mm, 52 * mm, CW - 76 * mm]))
+
+story.append(Spacer(1, 6))
+story.append(Paragraph("The 70 / 30 split \u2014 your marks now have weight", S['h2']))
+story.append(Paragraph(
+    "<b>Thirty per cent</b> of a learner's final grade comes from work done in your school and "
+    "marked by you \u2014 portfolios, performance and project work, plus end-of-term examinations. "
+    "<b>Seventy per cent</b> comes from WAEC's final examination.", S['body']))
+story.append(Paragraph(
+    "For years, internal marks were treated as a formality at the back of the mark book. That has "
+    "changed. The internal 30% now sits on a <b>school-based transcript</b>, with far greater "
+    "transparency and quality assurance. Practically: if your school's 30% is not credible, "
+    "transparent and defensible, the learner is the one who suffers when their transcript is "
+    "scrutinised \u2014 and the school is the one that is exposed. Reliable rubrics are no longer "
+    "good practice. They are protection.", S['body']))
+
+story.append(Spacer(1, 4))
+story.append(Paragraph("Continuous assessment \u2014 six obligations", S['h2']))
+story.append(datatable(
+    ["Requirement", "What it means", "Where teachers commonly slip"],
+    [["Assess against curriculum learning outcomes",
+      "Tasks must test the standards in the SBC for your level.",
+      "Setting questions on content you taught but which is not in the standards \u2014 or missing "
+      "standards you did not teach."],
+     ["Use a variety of assessment methods",
+      "Not just written tests. Projects, portfolios, performance, practicals, observation, oral work.",
+      "Relying on class tests alone, then finding the 30% is thin and undefensible."],
+     ["Record results systematically",
+      "Every learner's results kept accurately across the term, with the evidence behind them.",
+      "Losing the record book or reconstructing marks at the end of term. This is the most common "
+      "quality-assurance failure."],
+     ["Give feedback learners can act on",
+      "Results must feed back into teaching and into the learner's next steps \u2014 not just a mark.",
+      "Marking and recording without ever handing work back or re-teaching the gaps."],
+     ["Accommodate learners with SEN",
+      "Extra time, alternative formats and appropriate accommodations, applied fairly.",
+      "Treating accommodations as favours rather than requirements \u2014 and keeping no record of "
+      "what was provided."],
+     ["Be transparent and consistent",
+      "Learners know the criteria in advance; the same rubric is used across classes.",
+      "Two teachers marking the same subject to different standards, which undermines the whole "
+      "transcript."]],
+    widths=[42 * mm, 62 * mm, CW - 104 * mm]))
+
+story.append(Spacer(1, 6))
+story.append(Paragraph("The self-test", S['h2']))
+story.append(Paragraph(
+    "<b>If an inspector asked you to justify one learner's 30% mark today, could you show the work, "
+    "the rubric and the date?</b> If not, the record needs attention \u2014 and that is a fixable "
+    "problem, not a character flaw. One folder per class, one mark book, date everything, keep the "
+    "rubric with the task. That is the whole system.", S['body']))
+
+story.append(PageBreak())
+
+story += band("5 \u00b7 The Seven Pillars of Effective Assessment",
               "Section 2 of the manual. Think of them as seven pillars holding up a roof \u2014 "
               "remove one and the building leans.")
 story.append(Paragraph(
@@ -585,7 +684,7 @@ story.append(concept(
 story.append(PageBreak())
 
 # ================================================================ 5. DoK
-story += band("5 \u00b7 Depth of Knowledge \u2014 The Staircase of Thinking",
+story += band("6 \u00b7 Depth of Knowledge \u2014 The Staircase of Thinking",
               "How DEEP is the thinking? Not how difficult the words look.")
 story.append(Paragraph(
     "<b>The biggest misconception:</b> teachers think a question is DoK 4 because it uses big "
@@ -621,6 +720,60 @@ story.append(Paragraph(
     "\u2014 and it is easy to fix with a table of specification.", S['body']))
 
 story.append(Spacer(1, 6))
+story += band("7 \u00b7 Strategies in Action",
+              "Three of the manual's strategies, brought down to earth")
+story.append(Paragraph(
+    "The manual lists around thirty assessment strategies in Section 7. Here are three that teachers "
+    "most often get wrong, or avoid because they look like too much work. Notice the same pattern in "
+    "all three: <b>the strategy is not the hard part. Deciding the criteria before you start is.</b>",
+    S['body']))
+story.append(Spacer(1, 4))
+
+story.append(concept(
+    "Portfolio \u2014 the learner's own story",
+    "A carefully chosen collection of a learner's work across time, showing progress towards the "
+    "learning outcomes. Usable formatively and, with a clear rubric, summatively.",
+    "Two things separate a real portfolio from a pile of papers. First it is <b>curated</b> \u2014 the "
+    "learner chooses what goes in, and learns by choosing. Second it carries <b>reflection</b> \u2014 "
+    "beside each piece, a short note: \u201cI chose this because\u2026\u201d and \u201cnext time I "
+    "would\u2026\u201d. Without reflection you have a folder. With it, you have assessment as learning.",
+    "<b>Where the manual helps:</b> Appendix C.1 gives worked portfolio exemplars for Science and "
+    "Mathematics, including the rubric. <b>Time-saver:</b> you do not mark every piece \u2014 you mark "
+    "the reflections and the final selection, which is where the thinking is visible."))
+
+story.append(concept(
+    "Debate \u2014 thinking out loud",
+    "Learners take a position on an issue, argue it with evidence, and respond to the opposing case. "
+    "You assess the quality of the thinking, not the conclusion.",
+    "A Government class debates: \u201cShould Ghana raise the minimum wage?\u201d Half the room argues "
+    "for it, half against. What you are assessing: clarity of the argument \u00b7 use of evidence, not "
+    "just opinion \u00b7 quality of rebuttal \u2014 do they actually answer the other side? \u00b7 "
+    "listening \u00b7 respectful disagreement.",
+    "<b>The rule that makes it work:</b> give the rubric <i>before</i> the debate and give learners "
+    "research time. A debate sprung on learners with no preparation assesses <b>confidence, not "
+    "competence</b> \u2014 and it rewards the loudest voices. Offer a written or small-group "
+    "alternative for learners who cannot perform before a large audience."))
+
+story.append(concept(
+    "Practical and performance \u2014 doing it for real",
+    "Learners demonstrate a skill in a real or simulated setting, and you judge the <b>doing</b> "
+    "\u2014 not just the writing about it. The manual calls this performance-based, practical or "
+    "authentic assessment.",
+    "The Chemistry learner stands at the bench and titrates. The Technical Skills learner dismantles "
+    "and reassembles an engine. The Visual Arts learner throws a pot. The Music learner performs. You "
+    "are watching the skill, not reading about it. And if you have no laboratory, a simulated or "
+    "improvised setting still counts \u2014 the manual explicitly allows \u201creal or simulated\u201d "
+    "contexts.",
+    "<b>The teacher's five jobs, from the manual:</b> design a task requiring real-life application "
+    "\u00b7 provide resources, guidance and support \u00b7 evaluate against <i>predetermined</i> "
+    "criteria \u00b7 model the skill \u00b7 serve as coach or mentor throughout. <b>Why the rubric "
+    "matters most here:</b> a written script can be re-read; a practical is judged live, once. Without "
+    "criteria fixed in advance you will mark the confident performer higher than the careful one "
+    "\u2014 and that is a reliability failure, not an opinion."))
+
+story.append(PageBreak())
+
+# ================================================================ 8. MISREADINGS
 story += band("The Six-Phase Assessment Plan",
               "Turning all of this into a plan you can actually follow", color=TERRA)
 story.append(datatable(
@@ -643,7 +796,132 @@ story.append(datatable(
 story.append(PageBreak())
 
 # ================================================================ 6. JARGON BUSTER
-story += band("6 \u00b7 The Jargon Buster",
+story += band("8 \u00b7 Designing a Task & Rubric \u2014 Your Workshop Guide",
+              "The six steps, so you can do this again without us")
+story.append(Paragraph(
+    "This is the guide we used in the workshop. Use it for any assessment you build from now on. "
+    "It works for a class test, a project, a practical or a portfolio.", S['body']))
+story.append(Spacer(1, 4))
+
+story.append(Paragraph("Steps 1 and 2 \u2014 the outcome and the strategy", S['h2']))
+story.append(datatable(
+    ["Step", "What to decide", "The test to apply"],
+    [["1. Write the learning outcome",
+      "ONE sentence. \u201cBy the end of this, the learner should be able to\u2026\u201d Use an "
+      "<b>action verb</b>: explain, calculate, design, evaluate, demonstrate.",
+      "Could I show this sentence to someone else and would they know exactly what to teach and "
+      "assess? If not, it is too vague."],
+     ["1b. Check the DoK level",
+      "Is your verb at the right thinking level? State = DoK 1. Explain = DoK 2. Analyse or justify "
+      "= DoK 3. Design or evaluate = DoK 4.",
+      "Does the thinking level match the standard in the curriculum for this year group?"],
+     ["2. Choose the assessment strategy",
+      "Which family? <b>Informal</b> (observation, questioning) \u00b7 <b>Written</b> (test, essay) "
+      "\u00b7 <b>Performance</b> (project, practical, portfolio, debate).",
+      "Could a learner who genuinely has this skill fail this task for a reason that has nothing to "
+      "do with the skill?"],
+     ["2b. Sanity-check three pillars",
+      "<b>Valid</b> (measures the outcome) \u00b7 <b>Reliable</b> (markable the same way twice) "
+      "\u00b7 <b>Practicable</b> (runnable in week eight with your class size).",
+      "If any of the three fails, change the strategy now \u2014 not after you have built the task."]],
+    widths=[40 * mm, 62 * mm, CW - 102 * mm]))
+story.append(Paragraph(
+    "Do not think about the task for the first ten minutes. Outcome first \u2014 the task is easy "
+    "once the outcome is clear, and almost impossible before it is.", S['small']))
+
+story.append(Spacer(1, 6))
+story.append(Paragraph("Steps 3 and 4 \u2014 the task and the rubric", S['h2']))
+story.append(datatable(
+    ["Step", "What to decide", "The test to apply"],
+    [["3. Write the task",
+      "Exactly what the learner must do: the instructions you would give them, and what they must "
+      "produce. One task \u2014 not a list of five.",
+      "Could a learner who has the skill show it here? And would a learner who only memorised "
+      "definitions be unable to fake it?"],
+     ["3b. Consider your SEN learners",
+      "What accommodations would this task need? Extra time, larger print, an oral alternative, or a "
+      "written alternative to a performance.",
+      "Have I decided this in advance \u2014 rather than improvising on the day and forgetting to "
+      "record it?"],
+     ["4. Build the rubric",
+      "<b>Three bands</b>: Excellent / Good / Developing. <b>Four criteria</b> at most. Each cell "
+      "says what the work must show to earn that band.",
+      "Could a colleague pick this up and mark the same script the same way I would? That is "
+      "reliability."],
+     ["4b. Write the learner-facing version",
+      "One or two sentences telling learners what \u201cexcellent\u201d looks like. This is the "
+      "part handed out <b>before</b> the task.",
+      "Have I described the WORK, not the learner? \u201cClear argument with evidence\u201d "
+      "\u2014 not \u201cvery good student\u201d."]],
+    widths=[40 * mm, 62 * mm, CW - 102 * mm]))
+story.append(Paragraph(
+    "Keep the rubric simple. Three bands and four criteria. A simple rubric used consistently beats "
+    "a detailed one abandoned in week three.", S['small']))
+
+story.append(Spacer(1, 6))
+story.append(Paragraph("Step 5 \u2014 the quality checklist", S['h2']))
+story.append(Paragraph(
+    "Read your own work against these six questions. Find the ONE problem that is easiest to fix. "
+    "Fix it. Then stop.", S['body']))
+story.append(datatable(
+    ["Check", "Ask yourself", "If it fails"],
+    [["Validity", "Does my task actually measure the outcome I wrote \u2014 or has it drifted into "
+      "something easier to set?", "Change the task, not the outcome."],
+     ["Reliability", "Could a colleague mark this the same way I would, using only my rubric?",
+      "Add specificity to the vague rubric cells."],
+     ["Fairness", "Does the task assume experiences or contexts some of my learners have not had?",
+      "Re-context it to something familiar \u2014 the physics of a trotro, not of cricket."],
+     ["Inclusivity", "Who cannot access this task, and what have I put in place for them?",
+      "Add an accommodation and write it down."],
+     ["Transparency", "Could I hand this rubric to learners BEFORE the task, and would it help them "
+      "aim?", "Rewrite the wording so a learner can understand it."],
+     ["Practicability", "Can I run this, mark it AND give feedback \u2014 with my real class size?",
+      "Scale it down. A smaller task you complete beats a grand one you abandon."]],
+    widths=[28 * mm, 82 * mm, CW - 110 * mm]))
+
+story.append(PageBreak())
+
+# ================================================================ 9. CHALLENGES
+story += band("9 \u00b7 Common Challenges & Practical Solutions",
+              "The real constraints \u2014 not excuses. Every answer here is startable this term "
+              "without extra budget.")
+story.append(datatable(
+    ["The challenge", "What it looks like", "What actually works"],
+    [["\u201cMy class is too large to assess properly.\u201d",
+      "60 learners, one teacher, no time. Individual oral assessment is impossible.",
+      "Do not assess everyone individually. Use methods that scale: whole-class response, exit "
+      "cards collected at the door, peer assessment with a rubric, group projects with individual "
+      "accountability. Sample deeply rather than test everyone shallowly."],
+     ["\u201cThere is not enough time in the term.\u201d",
+      "The syllabus is crowded. Assessment feels like an addition on top of teaching.",
+      "Assessment <b>is</b> teaching, not an addition. Three minutes of exit cards replaces an hour "
+      "of re-teaching material the class already knew. Start small \u2014 one exit card a week, not "
+      "a full new system."],
+     ["\u201cMarking already takes my evenings.\u201d",
+      "Every script marked in full detail, late at night, then filed.",
+      "Mark drafts formatively and the final version summatively. Use rubrics so marking is a "
+      "judgement against criteria, not a rewrite. And remember: feedback needs <i>time for learners "
+      "to act on it</i> more than it needs length."],
+     ["\u201cI was never trained to design rubrics.\u201d",
+      "Rubrics feel like something other people know how to do.",
+      "You do not have to start from a blank page. The NaCCA manual's <b>Appendix C</b> has worked "
+      "exemplars and rubrics for portfolios, projects, debates, practicals, questioning and more. "
+      "Adapt one."],
+     ["\u201cThe learners only care about marks.\u201d",
+      "Learners skip the comments and look straight at the score.",
+      "That is learned behaviour, and it is rational \u2014 marks are what they have always been "
+      "rewarded for. Change it by giving them <i>time</i> to act on feedback, and by grading a draft "
+      "formatively. When feedback visibly improves their next mark, they start reading it."],
+     ["\u201cWhat about learners who will not engage?\u201d",
+      "Some learners will not speak in a debate or take part in peer assessment.",
+      "Offer alternative formats rather than excuses. A written alternative to a debate still "
+      "assesses the reasoning. And check your own task first \u2014 often the barrier is the format, "
+      "not the learner."]],
+    widths=[42 * mm, 54 * mm, CW - 96 * mm]))
+
+story.append(PageBreak())
+
+story += band("10 \u00b7 The Jargon Buster",
               "Every technical term, in plain words, with a picture")
 
 JB = [
@@ -812,7 +1090,7 @@ for term, meaning, picture in JB:
 story.append(PageBreak())
 
 # ================================================================ 7. SYSTEM TERMS
-story += band("6b \u00b7 The System: Acronyms and Structures",
+story += band("10b \u00b7 The System: Acronyms and Structures",
               "The letters you see on circulars and in the curriculum")
 story.append(datatable(
     ["Acronym", "Full name", "Plain English", "Why teachers should care"],
@@ -873,61 +1151,7 @@ story.append(Paragraph(
 story.append(PageBreak())
 
 # ================================================================ 7. STRATEGIES
-story += band("7 \u00b7 Strategies in Action",
-              "Three of the manual's strategies, brought down to earth")
-story.append(Paragraph(
-    "The manual lists around thirty assessment strategies in Section 7. Here are three that teachers "
-    "most often get wrong, or avoid because they look like too much work. Notice the same pattern in "
-    "all three: <b>the strategy is not the hard part. Deciding the criteria before you start is.</b>",
-    S['body']))
-story.append(Spacer(1, 4))
-
-story.append(concept(
-    "Portfolio \u2014 the learner's own story",
-    "A carefully chosen collection of a learner's work across time, showing progress towards the "
-    "learning outcomes. Usable formatively and, with a clear rubric, summatively.",
-    "Two things separate a real portfolio from a pile of papers. First it is <b>curated</b> \u2014 the "
-    "learner chooses what goes in, and learns by choosing. Second it carries <b>reflection</b> \u2014 "
-    "beside each piece, a short note: \u201cI chose this because\u2026\u201d and \u201cnext time I "
-    "would\u2026\u201d. Without reflection you have a folder. With it, you have assessment as learning.",
-    "<b>Where the manual helps:</b> Appendix C.1 gives worked portfolio exemplars for Science and "
-    "Mathematics, including the rubric. <b>Time-saver:</b> you do not mark every piece \u2014 you mark "
-    "the reflections and the final selection, which is where the thinking is visible."))
-
-story.append(concept(
-    "Debate \u2014 thinking out loud",
-    "Learners take a position on an issue, argue it with evidence, and respond to the opposing case. "
-    "You assess the quality of the thinking, not the conclusion.",
-    "A Government class debates: \u201cShould Ghana raise the minimum wage?\u201d Half the room argues "
-    "for it, half against. What you are assessing: clarity of the argument \u00b7 use of evidence, not "
-    "just opinion \u00b7 quality of rebuttal \u2014 do they actually answer the other side? \u00b7 "
-    "listening \u00b7 respectful disagreement.",
-    "<b>The rule that makes it work:</b> give the rubric <i>before</i> the debate and give learners "
-    "research time. A debate sprung on learners with no preparation assesses <b>confidence, not "
-    "competence</b> \u2014 and it rewards the loudest voices. Offer a written or small-group "
-    "alternative for learners who cannot perform before a large audience."))
-
-story.append(concept(
-    "Practical and performance \u2014 doing it for real",
-    "Learners demonstrate a skill in a real or simulated setting, and you judge the <b>doing</b> "
-    "\u2014 not just the writing about it. The manual calls this performance-based, practical or "
-    "authentic assessment.",
-    "The Chemistry learner stands at the bench and titrates. The Technical Skills learner dismantles "
-    "and reassembles an engine. The Visual Arts learner throws a pot. The Music learner performs. You "
-    "are watching the skill, not reading about it. And if you have no laboratory, a simulated or "
-    "improvised setting still counts \u2014 the manual explicitly allows \u201creal or simulated\u201d "
-    "contexts.",
-    "<b>The teacher's five jobs, from the manual:</b> design a task requiring real-life application "
-    "\u00b7 provide resources, guidance and support \u00b7 evaluate against <i>predetermined</i> "
-    "criteria \u00b7 model the skill \u00b7 serve as coach or mentor throughout. <b>Why the rubric "
-    "matters most here:</b> a written script can be re-read; a practical is judged live, once. Without "
-    "criteria fixed in advance you will mark the confident performer higher than the careful one "
-    "\u2014 and that is a reliability failure, not an opinion."))
-
-story.append(PageBreak())
-
-# ================================================================ 8. MISREADINGS
-story += band("8 \u00b7 Phrases We Get Wrong",
+story += band("11 \u00b7 Phrases We Get Wrong",
               "Common misreadings, corrected")
 story.append(datatable(
     ["People say\u2026", "But the manual means\u2026"],
@@ -976,7 +1200,7 @@ story.append(Paragraph(
 story.append(PageBreak())
 
 # ================================================================ 9. SUMMARY
-story += band("9 \u00b7 The One-Page Summary", "Pin this above your desk")
+story += band("12 \u00b7 The One-Page Summary", "Pin this above your desk")
 story.append(Spacer(1, 6))
 CEN = ParagraphStyle('cen', fontName="Body", fontSize=11.5, leading=18,
                       textColor=INK, alignment=TA_CENTER, spaceAfter=9)
