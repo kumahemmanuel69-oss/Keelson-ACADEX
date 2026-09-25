@@ -133,6 +133,18 @@ def notes(slide, text):
     slide.notes_slide.notes_text_frame.text = text
 
 
+def picture_exact(slide, name, l, t, w, max_h=5.05):
+    """Place an image at its natural aspect ratio. Never crops, never overflows."""
+    path = os.path.join(ASSETS, name)
+    iw, ih = Image.open(path).size
+    h = w * ih / iw
+    if h > max_h:                      # too tall -> shrink width to match
+        h = max_h
+        w = h * iw / ih
+    slide.shapes.add_picture(path, Inches(l), Inches(t), Inches(w), Inches(h))
+    return h, w
+
+
 def new():
     return prs.slides.add_slide(BLANK)
 
@@ -356,16 +368,16 @@ def slide_image_text(title, sub, img, bullets, img_side="right", accent=GREEN,
                      note_text="", img_caption=None):
     s = new()
     y = title_bar(s, title, sub)
-    img_w = 5.35
+    img_w = 6.25
     txt_w = CW - img_w - 0.42
     if img_side == "right":
         il, tl = M + txt_w + 0.42, M
     else:
         il, tl = M, M + img_w + 0.42
-    picture_cover(s, img, il, y + 0.05, img_w, 5.10)
+    img_h, img_w = picture_exact(s, img, il, y + 0.05, img_w)
     rect(s, il, y + 0.05, img_w, 0.065, accent)
     if img_caption:
-        tf = textbox(s, il, y + 5.22, img_w, 0.4)
+        tf = textbox(s, il, y + 0.10 + img_h, img_w, 0.40)
         para(tf, img_caption, 10.5, GREY, italic=True, first=True, space_after=0,
              align=PP_ALIGN.CENTER, line_spacing=1.05)
     layout_cards(s, bullets, tl, y + 0.06, txt_w, accent, footer_cb=footer)
@@ -480,11 +492,11 @@ def slide_grid_cards(title, sub, img, bullets, accent=GREEN, note_text="",
     """Image on the left, cards in a 2-column grid on the right."""
     s = new()
     y = title_bar(s, title, sub)
-    img_w = 4.30
-    picture_cover(s, img, M, y + 0.05, img_w, 5.10)
+    img_w = 4.55
+    img_h, img_w = picture_exact(s, img, M, y + 0.05, img_w)
     rect(s, M, y + 0.05, img_w, 0.065, accent)
     if img_caption:
-        tf = textbox(s, M, y + 5.22, img_w, 0.4)
+        tf = textbox(s, M, y + 0.10 + img_h, img_w, 0.4)
         para(tf, img_caption, 10.5, GREY, italic=True, first=True, space_after=0,
              align=PP_ALIGN.CENTER, line_spacing=1.05)
     gl = M + img_w + 0.40
@@ -600,11 +612,15 @@ def slide_activity(title, sub, mins, steps, img=None, note_text="", accent=GOLD,
     s = new()
     y = title_bar(s, title, sub)
     if img:
-        img_w = 4.05
-        picture_cover(s, img, M, y + 0.05, img_w, 5.10)
+        img_w = 4.55
+        img_h, img_w = picture_exact(s, img, M, y + 0.05, img_w)
         rect(s, M, y + 0.05, img_w, 0.065, accent)
-        tl = M + img_w + 0.42
-        tw = CW - img_w - 0.42
+        tf = textbox(s, M, y + 0.14 + img_h, img_w, 0.45)
+        para(tf, "You will need: A3 or flip-chart paper, marker pens, sticky notes.",
+             10.5, GREY, italic=True, first=True, space_after=0,
+             align=PP_ALIGN.CENTER, line_spacing=1.08)
+        tl = M + max(img_w, 4.55) + 0.45
+        tw = SW - M - tl
     else:
         tl, tw = M, CW
     # timing badge
@@ -768,11 +784,24 @@ def slide_icebreaker():
     s = new()
     y = title_bar(s, "Icebreaker \u2014 One Word for Assessment",
                   "Five minutes \u00b7 honesty welcome, formality not required")
-    img_w = 5.10
-    picture_cover(s, "18_icebreaker.jpg", M, y + 0.05, img_w, 5.10)
+    img_w = 5.55
+    img_h, img_w = picture_exact(s, "18_icebreaker.jpg", M, y + 0.05, img_w)
     rect(s, M, y + 0.05, img_w, 0.065, GOLD)
-    tl = M + img_w + 0.42
-    tw = CW - img_w - 0.42
+    # debrief sits under the image, so neither column is empty
+    dy = y + 0.18 + img_h
+    dh = 7.00 - dy
+    rect(s, M, dy, img_w, dh, GREEN_LT, MSO_SHAPE.ROUNDED_RECTANGLE).adjustments[0] = 0.06
+    rect(s, M, dy, 0.055, dh, GREEN)
+    tf = textbox(s, M + 0.26, dy + 0.18, img_w - 0.52, dh - 0.36)
+    para(tf, "WHY WE START HERE", 10.5, GREEN, bold=True, font=HEAD_FONT, first=True,
+         space_after=5)
+    para(tf, "You will hear words like stress, marks, fear, pressure, paperwork, ranking. "
+             "You may also hear growth, feedback, help, understanding. Both sets are honest "
+             "\u2014 and the difference between them is the whole point of today.",
+         11, INK, space_after=0, line_spacing=1.12)
+    # steps down the right
+    tl = M + img_w + 0.45
+    tw = CW - img_w - 0.45
     b = rect(s, tl, y + 0.04, 1.55, 0.42, GOLD, MSO_SHAPE.ROUNDED_RECTANGLE)
     b.adjustments[0] = 0.4
     tfb = b.text_frame
@@ -788,25 +817,14 @@ def slide_icebreaker():
                     "uncomfortable ones."),
     ]
     by = y + 0.62
-    ch = 1.20
+    ch = (6.90 - by - 2 * 0.16) / 3
     for i, (label, body) in enumerate(steps):
-        ct = by + i * (ch + 0.10)
+        ct = by + i * (ch + 0.16)
         rect(s, tl, ct, tw, ch, WHITE, MSO_SHAPE.ROUNDED_RECTANGLE).adjustments[0] = 0.08
         rect(s, tl, ct, 0.055, ch, GOLD)
-        tf = textbox(s, tl + 0.24, ct + 0.14, tw - 0.48, ch - 0.28)
-        para(tf, label, 12.5, TERRA, bold=True, font=HEAD_FONT, first=True, space_after=3)
-        para(tf, body, 11.5, INK, space_after=0, line_spacing=1.10)
-    # debrief card
-    dy = by + 3 * (ch + 0.10) - 0.10
-    rect(s, tl, dy, tw, 1.72, GREEN_LT, MSO_SHAPE.ROUNDED_RECTANGLE).adjustments[0] = 0.06
-    rect(s, tl, dy, 0.055, 1.72, GREEN)
-    tf = textbox(s, tl + 0.24, dy + 0.16, tw - 0.48, 1.44)
-    para(tf, "WHY WE START HERE", 10.5, GREEN, bold=True, font=HEAD_FONT, first=True,
-         space_after=5)
-    para(tf, "You will hear words like stress, marks, fear, pressure, paperwork, ranking. "
-             "You may also hear growth, feedback, help, understanding. Both sets are honest "
-             "\u2014 and the difference between them is the whole point of today.",
-         11, INK, space_after=0, line_spacing=1.12)
+        tf = textbox(s, tl + 0.26, ct + 0.22, tw - 0.52, ch - 0.44)
+        para(tf, label, 13.5, TERRA, bold=True, font=HEAD_FONT, first=True, space_after=6)
+        para(tf, body, 12, INK, space_after=0, line_spacing=1.14)
     footer(s)
     notes(s, "ICEBREAKER (5 min) - this sets the emotional tone for the whole day\n\n"
              "DO NOT SKIP THIS. It looks like a warm-up; it is actually the most important five "
@@ -827,7 +845,8 @@ def slide_icebreaker():
              "of us were assessed that way ourselves, and we inherited it. By the end of today I "
              "want to move some of these words across to the other side.'\n\n"
              "DO NOT let anyone feel accused. Frame it as something we inherited, not something we "
-             "chose. Then move on briskly - do not let the icebreaker run past five minutes.")
+             "chose. Then move on briskly - do not let the icebreaker run past five minutes.\n\n"
+             "KEEP THE BOARD. You will call back to these words on the closing slide.")
     return s
 
 
@@ -1179,7 +1198,7 @@ slide_table(
       "Two teachers marking the same subject to different standards, which undermines the whole transcript."]],
     col_w=[3.15, 4.80, 4.14],
     intro="Six obligations that come with the 30%. None of them is optional, and all of them are auditable.",
-    row_h=0.94, fsize=11,
+    row_h=0.735, fsize=9.6,
     note_text="CONTINUOUS ASSESSMENT REQUIREMENTS (3 min)\n\n"
              "This slide turns policy into a checklist. Go down the list quickly - do not read "
              "every word aloud. Instead, for each row, ask: 'How many of us are confident we could "
@@ -1964,7 +1983,7 @@ slide_table(
       "Scale it down. A smaller task you complete beats a grand one you abandon."]],
     col_w=[2.15, 6.35, 3.59],
     intro="Six questions. Five minutes. This is the step that separates a nice-looking document from a usable tool.",
-    row_h=0.83, fsize=11,
+    row_h=0.76, fsize=10.5,
     note_text="MINUTES 20-25: QUALITY CHECK\n\n"
              "THIS IS THE STEP TEACHERS WANT TO SKIP. Do not let them. Five minutes here is what "
              "makes the difference between a document and a tool.\n\n"
@@ -2095,7 +2114,7 @@ slide_table(
       "A note of the date feedback was returned is usually enough."]],
     col_w=[2.80, 5.30, 3.99],
     intro="Six things. If you can produce all six for any learner, your 30% is defensible.",
-    row_h=0.82, fsize=11,
+    row_h=0.76, fsize=10.5,
     note_text="RECORDS (4 min)\n\n"
              "OPEN BY REASSURING THEM: 'This is not about creating more paperwork. It is about "
              "keeping six things you probably already keep, in a way that can be found.'\n\n"
@@ -2170,7 +2189,7 @@ slide_solutions(
       "Some learners will not speak in a debate, will not participate in peer assessment.",
       "Offer alternative formats rather than excuses. A written alternative to a debate still assesses the reasoning. And check your own task first \u2014 often the barrier is the format, not the learner."]],
     intro="These are the real constraints \u2014 not excuses. Every answer below is something you can start this term without extra budget.",
-    row_h=0.83, fsize=10,
+    row_h=0.76, fsize=10,
     note_text="COMMON CHALLENGES (5 min)\n\n"
              "THIS SLIDE IS YOUR CREDIBILITY. If you do not address the real constraints honestly, "
              "everything else sounds like theory from someone who has not taught a large class.\n\n"
