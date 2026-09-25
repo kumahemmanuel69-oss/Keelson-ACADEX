@@ -15,9 +15,10 @@ Ghanaian classroom picture.
 
 | File | What it is |
 |---|---|
-| `Effective-Assessment-Practices-KATON-2026.pptx` | 51-slide editable deck, 16:9, speaker notes on every slide |
+| `Effective-Assessment-Practices-KATON-2026.pptx` | 56-slide editable deck, 16:9, speaker notes on every slide |
 | `Assessment-Handout-KATON-2026.pdf` | 28-page A4 companion handbook for colleagues |
 | `Presenters-Run-Sheet.md` | Timings, core-slide markers, facilitation cues |
+| `Deck-Preview-KATON-2026.pdf` | The deck as a 56-page PDF, for reading on any device |
 | `Assessment-Jargon-Buster.md` | The glossary as plain markdown |
 
 ### Deck follows the workshop agenda (2 h 30 m)
@@ -29,16 +30,35 @@ a badge on every segment.
 |---|---|---|
 | 00:00 | Welcome & Workshop Objectives | 1–3 |
 | 00:05 | Icebreaker — One Word for Assessment | 4 |
-| 00:10 | Session 1 — Understanding Assessment: Purpose & Types | 5–13 |
-| 00:30 | Session 2 — Ghana's Assessment Policy Landscape | 14–19 |
-| 00:45 | Break | 20 |
-| 01:00 | Session 3 — Principles of Effective Assessment | 21–29 |
-| 01:15 | Session 4 — Assessment Strategies Across Levels | 30–38 |
-| 01:35 | Practical Workshop — Design a Task & Rubric | 39–43 |
-| 02:00 | Gallery Walk & Group Share-Outs | 44 |
-| 02:10 | Using Assessment Data: Feedback & Records | 45–48 |
-| 02:20 | Common Challenges & Practical Solutions | 49 |
-| 02:25 | Action Planning & Closing | 50–51 |
+| 00:10 | Session 1 — Understanding Assessment: Purpose & Types | 5–14 |
+| 00:30 | Session 2 — Ghana's Assessment Policy Landscape | 15–22 |
+| 00:45 | Break | 23 |
+| 01:00 | Session 3 — Principles of Effective Assessment | 24–33 |
+| 01:15 | Session 4 — Assessment Strategies Across Levels | 34–43 |
+| 01:35 | Practical Workshop — Design a Task & Rubric | 44–49 |
+| 02:00 | Gallery Walk & Group Share-Outs | 50 |
+| 02:10 | Using Assessment Data: Feedback & Records | 51–53 |
+| 02:20 | Common Challenges & Practical Solutions | 54 |
+| 02:25 | Action Planning & Closing | 55–56 |
+
+### Teaching diagrams
+
+Five full-width diagrams carry the concepts that are hardest to explain in
+words. They are drawn in code (`tools/make_diagrams.py`) rather than generated
+as images, so every number and label is exact.
+
+| Diagram | Slide | Teaches |
+|---|---|---|
+| `cycle.png` | 13 | Assessment as a five-step loop, and the two steps schools skip |
+| `split_70_30.png` | 19 | The internal/external split as a ring |
+| `transcript.png` | 22 | A worked school-based transcript, and the inspector's question |
+| `dartboard.png` | 28 | Validity and reliability together, in four targets |
+| `dok_staircase.png` | 36 | Depth of Knowledge as four rising steps |
+
+**If you edit a diagram, mind the type size.** Each is shown about 11.2 in wide
+on the slide, so on the 2400 px canvas roughly 3 px equals 1 pt. Body text must
+stay at 32 px or above (≈10.7 pt on screen); anything under about 30 px is
+unreadable from the back of a hall. Cut content rather than shrinking type.
 
 ### Workshop objectives (slide 3)
 
@@ -91,7 +111,7 @@ from ~3.9 MB to ~230 KB. After rebuilding, confirm:
 
 - deck size is **≈3.9 MB** (not ~230 KB)
 - **zero** `[ illustration pending ]` text boxes
-- **51 slides** and **51 slides with speaker notes**
+- **56 slides** and **56 slides with speaker notes**
 - `PPTX_QA=1` reports **0 overflow**
 
 ### Content sources

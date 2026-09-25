@@ -17,6 +17,7 @@ from pptx.enum.shapes import MSO_SHAPE
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 ASSETS = os.path.join(ROOT, "assets", "opt")
+DIAGRAMS = os.path.join(ROOT, "assets", "diagrams")
 SRC_ASSETS = os.path.join(ROOT, "assets")
 
 
@@ -45,6 +46,29 @@ def ensure_assets(max_w=1600, quality=86):
     return made
 
 
+def ensure_diagrams():
+    """Redraw the teaching diagrams if assets/diagrams is missing.
+
+    Same reasoning as ensure_assets(): a sandbox reset can strip untracked
+    files, and a build with missing diagrams would silently fall back to
+    placeholder boxes.
+    """
+    want = ["dartboard", "dok_staircase", "cycle", "split_70_30", "transcript"]
+    missing = [w for w in want
+               if not os.path.exists(os.path.join(DIAGRAMS, w + ".png"))]
+    if not missing:
+        return 0
+    script = os.path.join(ROOT, "tools", "make_diagrams.py")
+    if not os.path.exists(script):
+        print(f"WARNING: {len(missing)} diagram(s) missing and no generator found")
+        return 0
+    import subprocess, sys as _sys
+    subprocess.run([_sys.executable, script], check=False)
+    print(f"regenerated diagrams: {', '.join(missing)}")
+    return len(missing)
+
+
+ensure_diagrams()
 ensure_assets()
 OUT = os.path.join(ROOT, "deliverables", "Effective-Assessment-Practices-KATON-2026.pptx")
 
@@ -157,6 +181,46 @@ def picture_cover(slide, name, l, t, w, h):
         pic.crop_top = f
         pic.crop_bottom = f
     return pic
+
+
+def picture_fit(slide, name, l, t, w, h):
+    """Place an image fully inside the box, centred, never cropped.
+
+    picture_cover() crops, which is right for photographs but destroys a
+    diagram whose labels run to the edge.
+    """
+    path = os.path.join(DIAGRAMS, name)
+    if not os.path.exists(path):
+        fb = rect(slide, l, t, w, h, GREEN_LT)
+        tf = fb.text_frame
+        tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+        para(tf, "[ diagram pending ]", 12, GREEN, first=True,
+             align=PP_ALIGN.CENTER, space_after=0)
+        return fb
+    iw, ih = Image.open(path).size
+    ar = iw / ih
+    if w / h > ar:                 # box wider than image -> fit height
+        nh, nw = h, h * ar
+    else:                          # box taller than image -> fit width
+        nw, nh = w, w / ar
+    return slide.shapes.add_picture(path, Inches(l + (w - nw) / 2),
+                                    Inches(t + (h - nh) / 2),
+                                    Inches(nw), Inches(nh))
+
+
+def slide_diagram(img, title, sub=None, caption=None, note_text="", accent=GREEN):
+    """A full-width teaching diagram with its own notes."""
+    s = new()
+    y = title_bar(s, title, sub)
+    box_h = SH - y - 1.34
+    picture_fit(s, img, M, y + 0.04, CW, box_h)
+    if caption:
+        tf = textbox(s, M, y + box_h + 0.12, CW, 0.44)
+        para(tf, caption, 12, GREY, first=True, italic=True,
+             align=PP_ALIGN.CENTER, space_after=0, line_spacing=1.06)
+    footer(s)
+    notes(s, note_text)
+    return s
 
 
 def notes(slide, text):
@@ -1046,6 +1110,28 @@ slide_concept(
     "BRIDGE TO SESSION 2: 'This is also where policy becomes personal. That 30% I just mentioned "
     "- that is you. Let us look at exactly what Ghana requires.'")
 
+slide_diagram(
+    "cycle.png",
+    "Assessment Is a Cycle, Not an Event",
+    "The loop that turns marks into learning \u2014 and where it usually breaks",
+    "Most of us run PLAN \u2192 TEACH \u2192 ASSESS and then stop. The learning happens in the last two steps.",
+    note_text="THE CYCLE (3 min)\n\n"
+    "WHY THIS SLIDE EXISTS: teachers often experience assessment as something that happens TO "
+    "them at the end of term - a deadline, a stack of scripts, a set of marks to enter. This "
+    "diagram reframes it as a loop the teacher controls.\n\n"
+    "TRACE IT WITH YOUR FINGER on the screen, or better, walk it around the room. Five steps, "
+    "and the arrow always comes back to PLAN.\n\n"
+    "THE KEY INSIGHT, and the one to say slowly: 'Most schools do the first three steps and "
+    "stop. You plan, you teach, you assess - and then the marks go in the book and nothing "
+    "changes. That is not assessment. That is record-keeping.'\n\n"
+    "ANALYSE is the step that is almost always skipped. Ask the room: 'When did you last sit "
+    "down with a set of results and look for a PATTERN, rather than just a mark?' We come back "
+    "to how to do that at 2:10.\n\n"
+    "THE TIMING POINT: the gap between ASSESS and ACT should be days. Feedback that arrives "
+    "three weeks later is history, not feedback.\n\n"
+    "LINK FORWARD: everything in Session 3 (the seven pillars) exists to make this loop "
+    "trustworthy enough to act on.")
+
 slide_table(
     "Quick Check \u2014 Formative or Summative?",
     "Two minutes \u00b7 call it out \u00b7 then we discuss",
@@ -1186,6 +1272,26 @@ slide_image_text(
              "if NaSIA asked?'\n\n"
              "This is the natural bridge into Session 3 on principles.")
 
+slide_diagram(
+    "split_70_30.png",
+    "The 70 / 30 Split \u2014 In One Picture",
+    "Why your internal marks carry more weight than they used to",
+    "Thirty per cent marked by you, seventy by WAEC \u2014 and the 30 is now the part that follows the learner.",
+    note_text="THE 30/70 SLIDE IN ONE PICTURE (2 min)\n\n"
+    "USE THIS IMMEDIATELY AFTER the previous slide. Some teachers will not have absorbed the "
+    "split from the text; the ring makes it visual in about four seconds.\n\n"
+    "POINT AT THE GREEN BAND: 'Thirty per cent. That is yours. Nobody else sets it, nobody "
+    "else marks it. That is roughly one full subject grade worth of a learner's future.'\n\n"
+    "POINT AT THE GOLD: 'Seventy per cent is WAEC. Same paper, same day, everybody in the "
+    "country. Nothing you can do about that in this room.'\n\n"
+    "THE LINE THAT LANDS: 'The 70 is fixed. The 30 is the part you actually control - and it "
+    "is now written down in a way that follows this child out of your school.'\n\n"
+    "HONEST CAVEAT TO GIVE: internal marks used to be soft data that nobody checked. That is "
+    "no longer true. Mark generously and you inflate a transcript. Mark harshly and you damage "
+    "a real future. Neither is fair.\n\n"
+    "DO NOT let this become a session about WAEC's grading. Keep it on the 30 and what it "
+    "demands of the teacher.")
+
 slide_table(
     "Continuous Assessment \u2014 What Is Required of You",
     "The practical obligations, in plain terms",
@@ -1253,6 +1359,28 @@ slide_concept(
              "an accusation - it is exactly the gap the reform is designed to close.\n\n"
              "DO NOT make this feel like a threat. Frame it as protecting the learner and "
              "protecting yourself. Then hand over to the break.")
+
+slide_diagram(
+    "transcript.png",
+    "What the Transcript Actually Looks Like",
+    "A worked example \u2014 and the question an inspector will ask about it",
+    "Every number in the internal columns must be traceable to a piece of marked work.",
+    note_text="THE TRANSCRIPT, CONCRETELY (3 min)\n\n"
+    "WHY A WORKED EXAMPLE: 'transcript' is an abstract word, and most teachers have never seen "
+    "one. Showing a table with real numbers makes the obligation concrete.\n\n"
+    "WALK DOWN ONE ROW, e.g. Core Mathematics: portfolio 8, project 9, exam 7 - internal total "
+    "24. Then WASSCE 52, final 76, grade B2. Show that the internal 24 is a QUARTER of the "
+    "final 76. It is not a rounding detail.\n\n"
+    "THE INSPECTOR QUESTION, at the bottom of the diagram: 'Show me the work behind this 24.' "
+    "Read it out. Then ask the room: 'If NaSIA walked in today and asked me that about learner "
+    "number 14 in this class, what could I actually put on the table?'\n\n"
+    "WHAT GOOD LOOKS LIKE: the portfolio piece, the project, the rubric it was marked against, "
+    "and a date. Four things. If you have those, the mark is defensible.\n\n"
+    "BE GENTLE HERE. Most teachers will privately realise the answer is 'not entirely'. That "
+    "is not an accusation - it is precisely the gap this reform is designed to close, and the "
+    "reason this workshop exists.\n\n"
+    "BREAK HANDOVER: thank them, give the time, and say you will be at the front during the "
+    "break for anyone with a specific subject question.")
 
 def slide_break():
     s = new()
@@ -1391,6 +1519,32 @@ slide_image_text(
              "the same subject and mark each other's sample. The manual recommends having another "
              "teacher review the work. You will be shocked how differently two people read the same "
              "answer. This is also a departmental consistency measure.")
+
+slide_diagram(
+    "dartboard.png",
+    "Validity and Reliability Together",
+    "The two pillars side by side \u2014 the target explains both in one picture",
+    "Validity is aiming at the right target. Reliability is hitting the same place every time. You need both.",
+    note_text="THE TARGET (3 min)\n\n"
+    "THIS IS THE BEST-REMEMBERED DIAGRAM IN ASSESSMENT TRAINING. Give it the time.\n\n"
+    "TOP LEFT - valid and reliable. Tight cluster on the centre. You measured the right thing "
+    "and you would get it again tomorrow. That is the goal.\n\n"
+    "TOP RIGHT - reliable but not valid. Tight cluster, wrong place. 'This is the teacher who "
+    "is very consistent and very wrong. Their marks are tidy, their record book is neat, and "
+    "they are confidently measuring the wrong thing. Consistency does not rescue you from "
+    "assessing the wrong outcome.'\n\n"
+    "BOTTOM LEFT - valid but not reliable. Spread around the centre. Right target on average, "
+    "but no single mark can be trusted. 'If this learner is ranked 12th today, is that real? "
+    "The average is fine. The individual mark is a coin toss.'\n\n"
+    "BOTTOM RIGHT - neither. Scatter. No use at all - not for a mark, not for feedback, not "
+    "for planning.\n\n"
+    "THE TEACHING MOVE: ask the room which panel is the most dangerous. Most will say bottom "
+    "right. The answer is the TOP RIGHT - because it looks competent. Nobody investigates a "
+    "neat, consistent record book.\n\n"
+    "CONNECT TO THE 30%: on a transcript, the top-right panel is the one that damages a "
+    "learner without anyone noticing.\n\n"
+    "TRANSITION: 'Validity and reliability are the two technical pillars. The next five are "
+    "about ethics and practicality.'")
 
 slide_concept(
     "3 \u00b7 Fairness and Ethics \u2014 An Equitable Chance",
@@ -1601,6 +1755,30 @@ slide_image_text(
              "both thin evidence and a narrow picture of the learner.\n\n"
              "POINT FORWARD: 'Everything on this slide is available to you in the workshop at 1:35. "
              "You are not designing in the abstract.'")
+
+slide_diagram(
+    "dok_staircase.png",
+    "Depth of Knowledge \u2014 Climbing the Staircase",
+    "How DEEP is the thinking? Not how difficult the words look.",
+    "The words can stay simple while the thinking goes deep \u2014 that is the whole point.",
+    note_text="THE STAIRCASE (3 min)\n\n"
+    "THEN the table on the next slide gives the detail. This slide is the shape of the idea.\n\n"
+    "READ THE BANNER ALOUD: 'The thinking gets deeper, not the words harder.' This is the "
+    "single most important sentence about DoK. Teachers commonly think a difficult question is "
+    "one with big words. DoK says the opposite: you can ask a very deep question in very simple "
+    "language.\n\n"
+    "WALK UP THE STAIRS with the Social Studies examples on the next slide. DoK 1 is recall - "
+    "state three causes. DoK 3 is a farmer whose yield is falling: diagnose it and justify it. "
+    "Same subject, same simple words, completely different thinking.\n\n"
+    "WHERE WASSCE SITS: the external paper increasingly rewards DoK 3 and 4. If every question "
+    "you set is DoK 1, your learners pass your class tests comfortably and then meet a paper "
+    "that asks them to reason - and they have never been asked to. Check your last test: count "
+    "how many questions were recall.\n\n"
+    "THE PRACTICAL RULE: a good SHS paper is not all DoK 4. It is a STAIRCASE - some recall to "
+    "secure the basics, most at DoK 2-3, and at least one genuinely extended task where you "
+    "can.\n\n"
+    "LINK FORWARD: in the workshop at 1:35 you will write a DoK level into your task "
+    "deliberately, instead of discovering it afterwards.")
 
 slide_table(
     "Depth of Knowledge \u2014 The Staircase of Thinking",
